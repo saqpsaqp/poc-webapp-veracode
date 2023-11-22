@@ -2,12 +2,26 @@ pipeline {
 
     agent any
 
+    triggers {
+    	pollSCM 'H/10 * * * *'
+    }
+
+    options {
+    	disableConcurrentBuilds()
+    }
+
     stages {
 
-        stage("build") {
-
+        stage("test") {
+            agent {
+                docker {
+                    image 'adoptopenjdk/openjdk17:latest'
+                    args '-v $HOME/.m2:/tmp/jenkins-home/.m2'
+                }
+            }
+            options { timeout(time: 30, unit: 'MINUTES') }
             steps {
-                echo 'Building application'
+                sh 'test/run.sh
             }
         }
 

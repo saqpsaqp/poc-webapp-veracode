@@ -3,7 +3,7 @@ FROM tomcat:9-jre8
 ENV JPDA_ADDRESS=8000
 ENV JPDA_TRANSPORT=dt_socket
 
-COPY ./tomcat/conf/server.xml /usr/local/tomcat/conf
+COPY ./tomcat/conf/server.xml /usr/local/tomcat/conf/server.xml
 VOLUME ["/usr/local/tomcat/webapps"]
 VOLUME ["/usr/local/tomcat/logs"]
 

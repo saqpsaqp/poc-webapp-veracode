@@ -21,7 +21,6 @@ services:
       dockerfile: tomcat/Dockerfile
     restart: always
     volumes:
-      - ./tomcat/conf:/usr/local/tomcat/conf
       - ./tomcat/webapps:/usr/local/tomcat/webapps
       - ./tomcat/logs:/usr/local/tomcat/logs
     environment:
