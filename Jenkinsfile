@@ -6,10 +6,6 @@ pipeline {
     	pollSCM '* * * * *'
     }
 
-    options {
-    	disableConcurrentBuilds()
-    }
-
     stages {
 
         stage("test") {
