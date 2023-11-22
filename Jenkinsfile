@@ -4,10 +4,24 @@ pipeline {
 
     stages {
 
+        stage("build") {
+
+            steps {
+                echo 'Building application'
+            }
+        }
+
         stage("test") {
 
             steps {
-                sh 'echo "Hola Mundo"'
+                echo 'Run Tests'
+            }
+        }
+
+        stage("deploy") {
+
+            steps {
+                echo 'Deploy in Tomcat'
             }
         }
     }
