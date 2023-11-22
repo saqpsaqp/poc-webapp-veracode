@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  jenkins:
+    hostname: poc-jenkins
+    container_name: poc-jenkins
+    build:
+      context: .
+      dockerfile: jenkins/Dockerfile
+    ports:
+      - "9090:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+
+  webapp:
+    hostname: poc-webapp
+    container_name: poc-webapp
+    build:
+      context: .
+      dockerfile: tomcat/Dockerfile
+    restart: always
+    volumes:
+      - ./tomcat/conf:/usr/local/tomcat/conf
+      - ./tomcat/webapps:/usr/local/tomcat/webapps
+      - ./tomcat/logs:/usr/local/tomcat/logs
+    environment:
+      - 'JAVA_OPTS=-Xmx1g'
+      - 'CATALINA_OPTS=-Duser.timezone=America/Bogota'
+      - 'CATALINA_OPTS=-Dfile.encoding="UTF-8"'
+    ports:
+      - "7009:8009"
+      - "7000:8000"
+      - "7070:8080"
+
+networks:
+  default:
+    external: true
+    name: poc-webapp-network

@@ -16,3 +16,7 @@ dependency-reduced-pom.xml
 README.html
 .idea
 *.iml
+
+local-deploy/jenkins_home
+local-deploy/tomcat/logs
+local-deploy/tomcat/webapps
