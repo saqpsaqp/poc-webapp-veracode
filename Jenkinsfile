@@ -21,14 +21,7 @@ pipeline {
             }
             options { timeout(time: 30, unit: 'MINUTES') }
             steps {
-                sh 'test/run.sh
-            }
-        }
-
-        stage("test") {
-
-            steps {
-                echo 'Run Tests'
+                sh 'test/run.sh'
             }
         }
 
