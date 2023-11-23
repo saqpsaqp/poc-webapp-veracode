@@ -22,7 +22,9 @@ pipeline {
         stage("build") {
             options { timeout(time: 30, unit: 'MINUTES') }
             steps {
-                sh 'webapp/gradle build -g gradle-user-home'
+                dir('webapp'){
+                    sh 'gradle build -g gradle-user-home'
+                }
             }
         }
 
