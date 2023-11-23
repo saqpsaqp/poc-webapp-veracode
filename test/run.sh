@@ -9,14 +9,3 @@ if [ $ret -ne 0 ]; then
 exit $ret
 fi
 rm -rf build
-
-cd ../initial
-
-gradle compileJava -g gradle-user-home
-ret=$?
-if [ $ret -ne 0 ]; then
-exit $ret
-fi
-rm -rf build
-
-exit
