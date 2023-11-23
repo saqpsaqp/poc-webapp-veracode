@@ -19,13 +19,6 @@ pipeline {
             }
         }
 
-        stage("veracode scan") {
-
-            steps {
-
-            }
-        }
-
         stage("deploy") {
 
             steps {
