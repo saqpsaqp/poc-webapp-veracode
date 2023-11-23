@@ -22,8 +22,4 @@ RUN wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.
 # Añadir Gradle al PATH
 ENV PATH $PATH:$GRADLE_HOME/bin
 
-# Crear un usuario con un UID específico
-RUN useradd -u 1000 ${LOCAL_USER}
-
-# Cambiar al usuario no root
-USER ${LOCAL_USER}
+VOLUME ["/var/jenkins_home"]

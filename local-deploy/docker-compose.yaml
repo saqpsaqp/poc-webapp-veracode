@@ -11,18 +11,18 @@ services:
       - "9090:8080"
       - "50000:50000"
     volumes:
-      - ./jenkins_home:/var/jenkins_home
+      - 'jenkins_home:/var/jenkins_home'
+    user: 1000:1000
 
-  webapp:
-    hostname: poc-webapp
-    container_name: poc-webapp
+  tomcat:
+    hostname: poc-tomcat
+    container_name: poc-tomcat
     build:
       context: .
       dockerfile: tomcat/Dockerfile
     restart: always
     volumes:
       - ./tomcat/webapps:/usr/local/tomcat/webapps
-      - ./tomcat/logs:/usr/local/tomcat/logs
     environment:
       - 'JAVA_OPTS=-Xmx1g'
       - 'CATALINA_OPTS=-Duser.timezone=America/Bogota'
@@ -31,6 +31,11 @@ services:
       - "7009:8009"
       - "7000:8000"
       - "7070:8080"
+
+volumes:
+  jenkins_home:
+    driver: local
+
 
 networks:
   default:

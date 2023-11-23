@@ -3,7 +3,7 @@ cd $(dirname $0)
 
 cd ../webapp
 
-./gradlew build
+gradle build -g gradle-user-home
 ret=$?
 if [ $ret -ne 0 ]; then
 exit $ret
@@ -12,7 +12,7 @@ rm -rf build
 
 cd ../initial
 
-./gradlew compileJava
+gradle compileJava -g gradle-user-home
 ret=$?
 if [ $ret -ne 0 ]; then
 exit $ret
