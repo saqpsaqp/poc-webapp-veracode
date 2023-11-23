@@ -12,10 +12,17 @@ pipeline {
 
     stages {
 
-        stage("build") {
+        stage("test") {
             options { timeout(time: 30, unit: 'MINUTES') }
             steps {
                 sh 'test/run.sh'
+            }
+        }
+
+        stage("build") {
+            options { timeout(time: 30, unit: 'MINUTES') }
+            steps {
+                sh 'webapp/gradle build -g gradle-user-home'
             }
         }
 
