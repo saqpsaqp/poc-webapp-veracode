@@ -32,7 +32,7 @@ pipeline {
             steps {
                 dir('webapp/build/libs'){
                         withCredentials([usernamePassword(credentialsId: 'API-Veracode-Erick', passwordVariable: 'SECRET_KEY', usernameVariable: 'SECRET_ID')]) {
-                            veracode applicationName: 'POC-WEBAPP-VERACODE', canFailJob: true, createProfile: true, criticality: 'VeryHigh', deleteIncompleteScanLevel: '2', fileNamePattern: '', replacementPattern: '', sandboxName: '', scanExcludesPattern: '', scanIncludesPattern: '', scanName: 'Scan Demo POC', teams: 'Default Team', unstableBuild: true, waitForScan: true, uploadIncludesPattern: '**/**.war', vid: SECRET_ID, vkey: SECRET_KEY
+                            veracode applicationName: 'POC-WEBAPP-VERACODE', canFailJob: true, createProfile: true, criticality: 'VeryHigh', deleteIncompleteScanLevel: '2', fileNamePattern: '', replacementPattern: '', sandboxName: '', scanExcludesPattern: '', scanIncludesPattern: '', scanName: 'Scan Demo POC - Build: $buildnumber', teams: 'Default Team', unstableBuild: true, waitForScan: true, uploadIncludesPattern: '**/**.war', vid: SECRET_ID, vkey: SECRET_KEY
                     }
                 }
             }
